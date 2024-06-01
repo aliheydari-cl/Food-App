@@ -7,9 +7,10 @@ Page {
 
     Text {
         id: name
-        text: qsTr("under development")
+        text: qsTr("Under Development")
         font.pixelSize: 27
         font.bold: true
+
         anchors.centerIn: parent
     }
 }

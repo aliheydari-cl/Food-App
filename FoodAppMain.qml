@@ -4,8 +4,6 @@ import QtQuick.Layouts
 
 Page {
     id: page
-    width: window.width
-    height: window.height
 
     Flickable {
         id: flickable
@@ -13,15 +11,16 @@ Page {
         height: parent.height
         clip: true
         contentHeight: column.height + 95
+
         anchors.horizontalCenter: parent.horizontalCenter
 
         Column {
             id: column
             width: parent.width
             spacing: 26
+
             anchors.top: parent.top
             anchors.topMargin: 15
-
 
             Label {
                 id: label1
@@ -34,12 +33,13 @@ Page {
                 width: parent.width
                 height: 54
 
-                SerchBox {
+                SearchBox {
                     id: serchBox
                     width: 263
                     height: 54
                     leftIconSource: "images/serchIcon.png"
                     rightIconSource: "images/settingIcon.png"
+
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                 }
@@ -51,7 +51,8 @@ Page {
                 IconImage {
                     id: notificationIcon
                     source: "images/notification"
-                    MouseArea {
+
+                    MouseArea {                       
                         anchors.fill: parent
 
                         onClicked: {
@@ -67,78 +68,68 @@ Page {
                 id: banner
             }
 
+            Row {
+                visible: false
+                id: rowSearchedText
+                width: parent.width
+                height: 44
+                spacing: 5
+
+                Rectangle {
+                    id: rectSearchedText
+                    width: 110
+                    height: parent.height
+                    color: "#FFEEDA"
+
+                    RowLayout {
+                        anchors.centerIn: parent
+
+                        Text {
+                            id: searchedText
+                            text: qsTr("")
+                            color: "#646464"
+                            font.pixelSize: 16
+                            font.weight: 600
+                        }
+
+                        Item {
+                            width: 25
+                            height: 25
+
+                            IconImage {
+                                source: "images/x.png"
+                                color: "#646464"
+                                sourceSize.width: 15
+                                anchors.fill: parent
+                                anchors.topMargin: 4
+                            }
+
+                            MouseArea {
+                                anchors.fill: parent
+
+                                onClicked: {
+                                    serchBox.text = ""
+                                }
+                            }
+                        }
+                    }
+                }                
+            }
+
             FoodCarts {
                 id: foodCarts
-                anchors.left: parent.left
-                anchors.right: parent.right
+                width: parent.width
             }
 
             DesertsCarts {
                 id: desertsCarts
-                anchors.left: parent.left
-                anchors.right: parent.right
-
+                width: parent.width
             }
-
         }
     }
 
-    ListModel {
-        id: foodListModel
-
-        ListElement {
-            imageSource: "images/ZingerBurger.png"
-            foodName: "Zinger Burger"
-            foodPrice: "2"
-
-            imageSource2: "images/rollParatha.png"
-            foodName2: "Roll Paratha"
-            foodPrice2: "3"
-        }
-        ListElement {
-            imageSource: "images/burger.png"
-            foodName: "Burger"
-            foodPrice: "2"
-
-            imageSource2: "images/sandwich.png"
-            foodName2: "Sandwich"
-            foodPrice2: "3"
-        }
-        ListElement {
-            imageSource: "images/pizzaRoll.png"
-            foodName: "Pizza roll"
-            foodPrice: "2"
-
-            imageSource2: "images/rollParatha.png"
-            foodName2: "Roll Paratha"
-            foodPrice2: "3"
-        }
-    }
-    ListModel {
-        id: singleFoodListModel
-
-        ListElement {
-            imageSource: "images/ZingerBurger.png"
-            foodName: "Zinger Burger"
-            foodPrice: "2"
-
-            imageSource2: "images/rollParatha.png"
-            foodName2: "Roll Paratha"
-            foodPrice2: "3"
-        }
-    }
-
-    ListModel {
-        id: desertsModel
-
-        ListElement {
-            imageSource: "images/biscut.png"
-            desertName: "Biscut"
-            desertPrice: "1"
-
-            imageSource2: "images/cup.png"
-            desertName2: "Cup"
-            desertPrice2: "3"
-        }
+    Models {
+        id: models
+        visible: false
     }
 }

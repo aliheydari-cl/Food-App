@@ -8,19 +8,21 @@ Page {
     height: window.height
 
     Rectangle {
-        anchors.top: parent.top
         width: parent.width
         height: parent.height / 3
         color: "#EC257C"
+
+        anchors.top: parent.top
     }
 
     Rectangle {
-        anchors.top: parent.top
-        anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width + 300
         height: parent.height / 1.8
         color: "#EC257C"
         radius: width / 2
+
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
     }
 
     Image {
@@ -28,6 +30,7 @@ Page {
         source: "images/logo2.png"
         sourceSize.width: 97
         sourceSize.height: 94
+
         anchors.bottom: text.top
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottomMargin: 17
@@ -39,6 +42,7 @@ Page {
         color: "white"
         font.pixelSize: 21
         font.weight: 650
+
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: rect.top
         anchors.bottomMargin: 55
@@ -48,20 +52,23 @@ Page {
         id: rect
         width: 300
         height: 398
+        radius: 20
+
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: parent.height / 2.9
-        radius: 20
 
         Label {
             id: signupLabel
             text: qsTr("Signup")
-            anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: 25
             font.weight: 650
+
+            anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: rect.top
             anchors.topMargin: 30
         }
+
         CustomTextField {
             id: nameTextField
             width: 255
@@ -69,10 +76,11 @@ Page {
             placeholder.text: "Name"
             leftIconSource: "images/userIcon.png"
             rightIcon.visible: false
+            leftPadding: 50
+
             anchors.top: signupLabel.bottom
             anchors.topMargin: 30
             anchors.horizontalCenter: parent.horizontalCenter
-            leftPadding: 50
         }
 
         CustomTextField {
@@ -82,6 +90,7 @@ Page {
             placeholder.text: "Email"
             leftIconSource: "images/emailIcon.png"
             rightIcon.visible: false
+
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: nameTextField.bottom
             anchors.topMargin: 20
@@ -94,6 +103,7 @@ Page {
             placeholder.text: "Password"
             leftIconSource: "images/passwordIcon.png"
             rightIconSource: "images/eyeIcon.png"
+
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: emailTextField.bottom
             anchors.topMargin: 20
@@ -103,6 +113,7 @@ Page {
             id: loginbutton
             width: 255
             height: 46
+
             anchors.top: passwordTextField.bottom
             anchors.topMargin: 31
             anchors.horizontalCenter: parent.horizontalCenter
@@ -117,7 +128,6 @@ Page {
                 anchors.centerIn: parent
                 font.weight: 670
                 font.pixelSize: 17
-
             }
 
             background: Rectangle {
@@ -131,6 +141,7 @@ Page {
         id: text2
         text: qsTr("Already have an account?")
         font.pixelSize: 13
+
         anchors.top: rect.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.topMargin: 27
@@ -141,6 +152,7 @@ Page {
         text: qsTr("Signin")
         color: "#EC257C"
         font.pixelSize: 13
+
         anchors.top: text2.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.topMargin: 11

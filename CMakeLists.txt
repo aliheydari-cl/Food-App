@@ -17,9 +17,10 @@ qt_add_qml_module(appfoodApp
     VERSION 1.0
     QML_FILES
         Main.qml
-        QML_FILES Footer.qml FoodCarts.qml Banner.qml DesertsCarts.qml SerchBox.qml
+        QML_FILES Footer.qml FoodCarts.qml Banner.qml DesertsCarts.qml SearchBox.qml
         QML_FILES FoodAppMain.qml CustomTextField.qml Signup.qml Description_2.qml
         QML_FILES Login.qml Description_1.qml LoadingPage.qml AccountPage.qml
+        QML_FILES SearchPage.qml
 
         RESOURCES images/food.png images/food2.png images/backFood2.png images/emailIcon.png
         RESOURCES images/logo2.png images/logo.png images/googleLogo.png images/food3.png
@@ -29,6 +30,8 @@ qt_add_qml_module(appfoodApp
         RESOURCES images/user2Icon.png images/IceCream.png images/burger.png images/facebookLogo.png
         RESOURCES images/ZingerBurger.png images/sandwich.png images/rollParatha.png
         RESOURCES images/ZingerBurger.png images/cup.png images/biscut.png images/pizzaRoll.png
+        RESOURCES images/x.png
+        QML_FILES Models.qml
 )
 
 set_target_properties(appfoodApp PROPERTIES

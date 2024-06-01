@@ -8,7 +8,6 @@ RowLayout {
     anchors.verticalCenter: parent.verticalCenter
     anchors.horizontalCenter: parent.horizontalCenter
 
-
     property Item currentRect: homePage
     property Item currentIcon: homePageIcon
 
@@ -32,11 +31,13 @@ RowLayout {
             id: homePageIcon
             source: "images/homeIcon.png"
             color: "#EC257C"
+
             anchors.centerIn: parent
         }
 
         MouseArea {
             anchors.fill: parent
+
             onClicked: {
                 selectPage(homePage, homePageIcon)
                 loader.source = "FoodAppMain.qml"
@@ -58,6 +59,7 @@ RowLayout {
             id: accountPageIcon
             source: "images/user2Icon.png"
             color: "white"
+
             anchors.centerIn: parent
         }
 
@@ -70,7 +72,6 @@ RowLayout {
                 p1.target = accountPage
                 p2.target = accountPage
                 anim.start()
-
             }
         }
     }
@@ -86,6 +87,7 @@ RowLayout {
             id: shopPageIcon
             source: "images/shopIcon.png"
             color: "white"
+
             anchors.centerIn: parent
         }
 
@@ -112,6 +114,7 @@ RowLayout {
             id: messagePageIcon
             source: "images/messageIcon.png"
             color: "white"
+
             anchors.centerIn: parent
         }
 

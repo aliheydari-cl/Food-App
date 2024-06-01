@@ -8,19 +8,21 @@ Page {
     height: window.height
 
     Rectangle {
-        anchors.top: parent.top
+        color: "#EC257C"
         width: parent.width
         height: parent.height / 3
-        color: "#EC257C"
+
+        anchors.top: parent.top
     }
 
     Rectangle {
-        anchors.top: parent.top
-        anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width + 300
         height: parent.height / 1.8
         color: "#EC257C"
         radius: width / 2
+
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
     }
 
     Image {
@@ -28,6 +30,7 @@ Page {
         source: "images/logo2.png"
         sourceSize.width: 97
         sourceSize.height: 94
+
         anchors.bottom: text.top
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottomMargin: 17
@@ -39,6 +42,7 @@ Page {
         color: "white"
         font.pixelSize: 21
         font.weight: 650
+
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: rect.top
         anchors.bottomMargin: 55
@@ -48,17 +52,19 @@ Page {
         id: rect
         width: 300
         height: 398
+        radius: 20
+
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: parent.height / 2.9
-        radius: 20
 
         Label {
             id: loginLabel
             text: qsTr("Login")
-            anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: 25
             font.weight: 650
+
+            anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: rect.top
             anchors.topMargin: 30
         }
@@ -67,23 +73,27 @@ Page {
             id: t1
             width: 255
             height: 45
+            leftPadding: 50
+
             placeholder.text: "example@gmail.com"
             leftIconSource: "images/userIcon.png"
             rightIconSource: "images/eyeIcon.png"
             rightIcon.visible: false
+
             anchors.top: loginLabel.bottom
             anchors.topMargin: 30
             anchors.horizontalCenter: parent.horizontalCenter
-            leftPadding: 50
         }
 
         CustomTextField {
             id: emailTextField
             width: 255
             height: 45
+
             placeholder.text: "Password"
             leftIconSource: "images/passwordIcon.png"
             rightIconSource: "images/eyeIcon.png"
+
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: t1.bottom
             anchors.topMargin: 20
@@ -93,15 +103,17 @@ Page {
             id: passwordText
             text: qsTr("Forget Password?")
             font.pixelSize: 12
+
             anchors.top: emailTextField.bottom
             anchors.topMargin: 10
             anchors.rightMargin: 22
             anchors.right: parent.right
 
-            MouseArea {
-                anchors.fill: parent
+            MouseArea {                
                 onEntered: passwordText.color = "blue"
                 onExited: passwordText.color = "black"
+
+                anchors.fill: parent
             }
         }
 
@@ -109,6 +121,7 @@ Page {
             id: loginbutton
             width: 255
             height: 46
+
             anchors.top: passwordText.bottom
             anchors.topMargin: 31
             anchors.horizontalCenter: parent.horizontalCenter
@@ -137,16 +150,18 @@ Page {
             text: qsTr("Or")
             color: "#EC257C"
             font.pixelSize: 13
+
             anchors.top: loginbutton.bottom
             anchors.topMargin: 5
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
         RowLayout {
+            spacing: 13
+
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: loginbutton.bottom
             anchors.topMargin: 31
-            spacing: 13
 
             Image {
                 id: googleLogo
@@ -182,8 +197,9 @@ Page {
 
     Text {
         id: text2
-        text: qsTr("Dont' have an accont?")
+        text: qsTr("Don't have an account?")
         font.pixelSize: 13
+
         anchors.top: rect.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.topMargin: 27
@@ -194,6 +210,7 @@ Page {
         text: qsTr("REGISTER")
         color: "#EC257C"
         font.pixelSize: 13
+
         anchors.top: text2.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.topMargin: 11
@@ -204,7 +221,6 @@ Page {
             onEntered: registerText.color = "blue"
             onExited: registerText.color = "#EC257C"
             onClicked: loader.source = "Signup.qml"
-
         }
     }
 

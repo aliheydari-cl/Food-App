@@ -14,16 +14,17 @@ Page {
 
     Image {
         id: logoImage
-        source: "images/logo.png"
-        anchors.centerIn: parent
-
+        source: "images/logo.png"     
         sourceSize.width: 130
         sourceSize.height: 127
+
+        anchors.centerIn: parent
     }
 
     Image {
         id: foodImage
         source: "images/food.png"
+
         anchors.left: parent.left
         anchors.bottom: parent.bottom
     }

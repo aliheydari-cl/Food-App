@@ -17,10 +17,8 @@ ApplicationWindow {
         Loader {
             id: loader
             source: "Description_1.qml"
-            anchors.top: parent.top
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.bottom: appFooter.top
+
+            anchors.fill: parent
         }
 
         Rectangle {
@@ -29,6 +27,7 @@ ApplicationWindow {
             radius: 4
             color: "#EC257C"
             visible: false
+
             anchors.bottom: parent.bottom
             anchors.left: parent.left
             anchors.right: parent.right
@@ -36,6 +35,7 @@ ApplicationWindow {
 
             Footer {
                 width: parent.width
+
                 anchors.fill: parent
                 anchors.margins: 10
             }
@@ -61,5 +61,4 @@ ApplicationWindow {
             easing.type: Easing.InOutQuad
         }
     }
-
 }

@@ -4,9 +4,11 @@ import QtQuick.Layouts
 
 ColumnLayout {
     id: foodColumnLayout
-    spacing: 10
+
+    anchors.horizontalCenter: parent.horizontalCenter
 
     property bool foodShowAll: false
+    property var repeater: repeater
 
     RowLayout {
         width: parent.width
@@ -20,135 +22,92 @@ ColumnLayout {
         Item {Layout.fillWidth: true}
 
         Rectangle {
-            width: 70
+            width: 60
             height: 50
             color: "transparent"
+
             Text {
                 id: viewMoreText
                 text: foodShowAll ? "Go Back" : "View More"
                 font.pixelSize: 11
                 color: "#646464"
-                anchors.right: parent.right
+
                 anchors.verticalCenter: parent.verticalCenter
+                anchors.right: parent.right
             }
+            
             MouseArea {
                 anchors.fill: parent
+
                 onClicked: {
                     foodShowAll ? foodShowAll = false : foodShowAll = true
+                    banner.visible ? banner.visible = false : banner.visible = true
                 }
             }
         }
     }
 
-    Repeater {
-        id: repeater
-        model: foodShowAll ? foodListModel : singleFoodListModel
+    GridLayout {
+        id: gridLayout
+        columns: 2
         width: parent.width
+        columnSpacing: 15
+        rowSpacing: 15
 
-        RowLayout {
+        Repeater {
+            id: repeater
+            model: foodShowAll ? models.foodListModel : models.singleFoodListModel
 
-            id:delegate
-            width: parent.width
+            ColumnLayout {
+                width: parent.width
 
-            Rectangle {
-                width: 158
-                height: 140
+                Rectangle {
+                    width: 158
+                    height: 140
+                    color: "#FFEEDA"
 
-                color: "#FFEEDA"
+                    Image {
+                        id: foodImage
+                        source: model.imageSource
 
-                Image {
-                    id: foodImage
-                    source: imageSource
-
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.bottom: foodNameText.top
-                    anchors.bottomMargin: 10
-                }
-
-                Text {
-                    id: foodNameText
-                    text: foodName
-                    font.weight: 590
-
-                    anchors.bottom: foodPriceLabel.top
-                    anchors.bottomMargin: 10
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
-                Label {
-                    id:foodPriceLabel
-                    text: foodPrice + "$"
-                    color: "#EC257C"
-                    font.pixelSize: 16
-                    font.weight: 600
-
-                    anchors.bottom: parent.bottom
-                    anchors.bottomMargin: 10
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked:  {
-                        p1.target = foodImage
-                        p2.target = foodImage
-                        anim.start()
-
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.bottom: foodNameText.top
+                        anchors.bottomMargin: 10
                     }
-                }
 
+                    Text {
+                        id: foodNameText
+                        text: model.foodName
+                        font.weight: 590
 
-            }
+                        anchors.bottom: foodPriceLabel.top
+                        anchors.bottomMargin: 10
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
 
-            Item {
-                width: 0
-                Layout.fillWidth: true
-            }
+                    Label {
+                        id: foodPriceLabel
+                        text: model.foodPrice + "$"
+                        color: "#EC257C"
+                        font.pixelSize: 16
+                        font.weight: 600
 
-            Rectangle {
-                width: 158
-                height: 140
-                color: "#FFEEDA"
-                Image {
-                    id: foodImage2
-                    source: imageSource2
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.bottom: foodNameText2.top
-                    anchors.bottomMargin: 10
-                }
+                        anchors.bottom: parent.bottom
+                        anchors.bottomMargin: 10
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
 
-                Text {
-                    id: foodNameText2
-                    text: foodName2
-                    font.weight: 590
+                    MouseArea {
+                        anchors.fill: parent
 
-                    anchors.bottom: foodPriceLabel2.top
-                    anchors.bottomMargin: 10
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
-                Label {
-                    id:foodPriceLabel2
-                    text: foodPrice2 + "$"
-                    color: "#EC257C"
-                    font.pixelSize: 16
-                    font.weight: 600
-
-                    anchors.bottom: parent.bottom
-                    anchors.bottomMargin: 10
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked:  {
-                        p1.target = foodImage2
-                        p2.target = foodImage2
-                        anim.start()
-
+                        onClicked: {
+                            p1.target = foodImage
+                            p2.target = foodImage
+                            anim.start()
+                        }
                     }
                 }
             }
         }
     }
 }
-
-

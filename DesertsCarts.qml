@@ -3,17 +3,18 @@ import QtQuick.Controls.Material
 import QtQuick.Layouts
 
 ColumnLayout {
-    id: desertsColumnLayout
-    spacing: 10
+    id: desertColumnLayout
 
-    property bool desersShowAll: false
+    anchors.horizontalCenter: parent.horizontalCenter
+
+    property bool desertShowAll: false
 
     RowLayout {
         width: parent.width
 
         Text {
             id: menuText
-            text: qsTr("Deserts")
+            text: qsTr("Popular Menu")
             font.weight: 550
         }
 
@@ -25,130 +26,86 @@ ColumnLayout {
             color: "transparent"
             Text {
                 id: viewMoreText
-                text: desersShowAll ? "Go Back" : "View More"
+                text: desertShowAll ? "Go Back" : "View More"
                 font.pixelSize: 11
                 color: "#646464"
-                anchors.right: parent.right
+
                 anchors.verticalCenter: parent.verticalCenter
+                anchors.right: parent.right
             }
+            
             MouseArea {
                 anchors.fill: parent
+
                 onClicked: {
-                    desersShowAll ? desersShowAll = false : desersShowAll = true
+                    desertShowAll ? desertShowAll = false : desertShowAll = true
                 }
             }
         }
     }
 
-    Repeater {
-        id: repeater
-        model: desertsModel
+    GridLayout {
+        id: gridLayout
         width: parent.width
 
-        RowLayout {
+        columns: 2
+        columnSpacing: 15
+        rowSpacing: 15
 
-            id:delegate
-            width: parent.width
+        Repeater {
+            id: repeater
+            model: models.desertsModel
 
-            Rectangle {
-                width: 158
-                height: 140
+            ColumnLayout {
+                width: parent.width
 
-                color: "#FFEEDA"
+                Rectangle {
+                    width: 158
+                    height: 140
+                    color: "#FFEEDA"
 
-                Image {
-                    id: desertImage
-                    source: imageSource
+                    Image {
+                        id: desertImage
 
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.bottom: desertNameText.top
-                    anchors.bottomMargin: 10
-                }
-
-                Text {
-                    id: desertNameText
-                    text: desertName
-                    font.weight: 590
-
-                    anchors.bottom: desertPriceLabel.top
-                    anchors.bottomMargin: 10
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
-                Label {
-                    id:desertPriceLabel
-                    text: desertPrice + "$"
-                    color: "#EC257C"
-                    font.pixelSize: 16
-                    font.weight: 600
-
-                    anchors.bottom: parent.bottom
-                    anchors.bottomMargin: 10
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
-                MouseArea {
-                    anchors.fill: parent
-
-                    onClicked: {
-                        p1.target = desertImage
-                        p2.target = desertImage
-                        anim.start()
+                        source: model.imageSource
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.bottom: desertNameText.top
+                        anchors.bottomMargin: 10
                     }
-                }
-            }
 
-            Item {
-                width: 0
-                Layout.fillWidth: true
-            }
+                    Text {
+                        id: desertNameText
+                        text: model.desertName
+                        font.weight: 590
 
-            Rectangle {
-                width: 158
-                height: 140
-                color: "#FFEEDA"
-                Image {
-                    id: desertImage2
-                    source: imageSource2
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.bottom: desertNameText2.top
-                    anchors.bottomMargin: 10
-                }
+                        anchors.bottom: desertPriceLabel.top
+                        anchors.bottomMargin: 10
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
 
-                Text {
-                    id: desertNameText2
-                    text: desertName2
-                    font.weight: 590
+                    Label {
+                        id: desertPriceLabel
+                        text: model.desertPrice + "$"
+                        color: "#EC257C"
+                        font.pixelSize: 16
+                        font.weight: 600
 
-                    anchors.bottom: desertPriceLabel2.top
-                    anchors.bottomMargin: 10
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
+                        anchors.bottom: parent.bottom
+                        anchors.bottomMargin: 10
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
 
-                Label {
-                    id:desertPriceLabel2
-                    text: desertPrice2 + "$"
-                    color: "#EC257C"
-                    font.pixelSize: 16
-                    font.weight: 600
+                    MouseArea {
+                        anchors.fill: parent
 
-                    anchors.bottom: parent.bottom
-                    anchors.bottomMargin: 10
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
-                MouseArea {
-                    anchors.fill: parent
-
-                    onClicked: {
-                        p1.target = desertImage2
-                        p2.target = desertImage2
-                        anim.start()
+                        onClicked: {
+                            p1.target = desertImage
+                            p2.target = desertImage
+                            anim.start()
+                        }
                     }
                 }
             }
         }
     }
 }
-
-

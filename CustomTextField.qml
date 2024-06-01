@@ -21,6 +21,7 @@ TextField {
         Text {
             id: placeholder
             color: "gray"
+            
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
             anchors.leftMargin: 50
@@ -46,6 +47,7 @@ TextField {
 
         MouseArea {
             anchors.fill: parent
+
             onClicked:{
                 if(textField.echoMode === TextInput.Password)
                     textField.echoMode = TextInput.Normal
