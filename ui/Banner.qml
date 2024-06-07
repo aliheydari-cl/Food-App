@@ -11,7 +11,7 @@ Rectangle {
 
     Image {
         id: iceCreamImage
-        source: "images/IceCream.png"
+        source: "qrc:/images/IceCream.png"
 
         anchors.right: parent.right
         anchors.rightMargin: 5

@@ -32,8 +32,8 @@ Page {
                 width: 263
                 height: 54
 
-                leftIconSource: "images/serchIcon.png"
-                rightIconSource: "images/settingIcon.png"
+                leftIconSource: "qrc:/images/serchIcon.png"
+                rightIconSource: "qrc:/images/settingIcon.png"
 
                 Layout.fillWidth: true
                 Layout.fillHeight: true
@@ -45,7 +45,7 @@ Page {
 
             IconImage {
                 id: notificationIcon
-                source: "images/notification"
+                source: "qrc:/images/notification"
 
                 MouseArea {
                     anchors.fill: parent
@@ -63,9 +63,8 @@ Page {
             width: parent.width
             height: parent.height
             spacing: 20
+
             anchors.horizontalCenter: parent.horizontalCenter
-
-
             anchors.top: row.bottom
             anchors.topMargin: 40
 
@@ -73,11 +72,12 @@ Page {
                 id: combo1
                 width: 315
                 height: 45
-                editable: true
+                editable: false
                 model: ["Type"]
 
                 Rectangle {
-                    anchors.fill: parent
+                    width: 316
+                    height: 45
                     color: "#EDEDED"
                     anchors.verticalCenter: parent.verticalCenter
                     radius: 5
@@ -88,16 +88,16 @@ Page {
                 id: combo2
                 width: 315
                 height: 45
-                editable: true
+                editable: false
                 model: ["Location"]
 
                 Rectangle {
-                    anchors.fill: parent
+                    width: 316
+                    height: 45
                     color: "#EDEDED"
                     anchors.verticalCenter: parent.verticalCenter
                     radius: 5
                 }
-
 
                 onAccepted: {
 
@@ -108,11 +108,12 @@ Page {
                 id: combo3
                 width: 315
                 height: 45
-                editable: true
-                model: ["Food", "Soup", "Appetizer", "Dessert"]
+                editable: false
+                model: ["Food", "Cake", "Soup", "Appetizer", "Dessert"]
 
                 Rectangle {
-                    anchors.fill: parent
+                    width: 316
+                    height: 45
                     color: "#EDEDED"
                     anchors.verticalCenter: parent.verticalCenter
                     radius: 5

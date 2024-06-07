@@ -27,7 +27,7 @@ Page {
 
     Image {
         id: logo2
-        source: "images/logo2.png"
+        source: "qrc:/images/logo2.png"
         sourceSize.width: 97
         sourceSize.height: 94
 
@@ -74,7 +74,7 @@ Page {
             width: 255
             height: 45
             placeholder.text: "Name"
-            leftIconSource: "images/userIcon.png"
+            leftIconSource: "qrc:/images/userIcon.png"
             rightIcon.visible: false
             leftPadding: 50
 
@@ -88,7 +88,7 @@ Page {
             width: 255
             height: 45
             placeholder.text: "Email"
-            leftIconSource: "images/emailIcon.png"
+            leftIconSource: "qrc:/images/emailIcon.png"
             rightIcon.visible: false
 
             anchors.horizontalCenter: parent.horizontalCenter
@@ -101,8 +101,8 @@ Page {
             width: 255
             height: 45
             placeholder.text: "Password"
-            leftIconSource: "images/passwordIcon.png"
-            rightIconSource: "images/eyeIcon.png"
+            leftIconSource: "qrc:/images/passwordIcon.png"
+            rightIconSource: "qrc:/images/eyeIcon.png"
 
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: emailTextField.bottom
@@ -119,7 +119,9 @@ Page {
             anchors.horizontalCenter: parent.horizontalCenter
 
             onClicked: {
-
+                p1.target = loginbutton
+                p2.target = loginbutton
+                anim.start()
             }
 
             Text {

@@ -3,11 +3,13 @@ import QtQuick.Controls.Material
 import QtQuick.Layouts
 
 ColumnLayout {
-    id: desertColumnLayout
+    id: soupColumnLayout
+    visible: soupListModel.count === 0 ? false : true
 
     anchors.horizontalCenter: parent.horizontalCenter
 
-    property bool desertShowAll: false
+    property bool soupShowAll: false
+    property var repeater: repeater
 
     RowLayout {
         width: parent.width
@@ -21,24 +23,25 @@ ColumnLayout {
         Item {Layout.fillWidth: true}
 
         Rectangle {
-            width: 70
+            width: 60
             height: 50
             color: "transparent"
+
             Text {
                 id: viewMoreText
-                text: desertShowAll ? "Go Back" : "View More"
+                text: soupShowAll ? "Go Back" : "View More"
                 font.pixelSize: 11
                 color: "#646464"
 
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
             }
-            
+
             MouseArea {
                 anchors.fill: parent
 
                 onClicked: {
-                    desertShowAll ? desertShowAll = false : desertShowAll = true
+                    soupShowAll ? soupShowAll = false : soupShowAll = true
                 }
             }
         }
@@ -46,15 +49,14 @@ ColumnLayout {
 
     GridLayout {
         id: gridLayout
-        width: parent.width
-
         columns: 2
+        width: parent.width
         columnSpacing: 15
         rowSpacing: 15
 
         Repeater {
             id: repeater
-            model: models.desertsModel
+            model: soupShowAll ? soupListModel : singleSoupListModel
 
             ColumnLayout {
                 width: parent.width
@@ -65,27 +67,27 @@ ColumnLayout {
                     color: "#FFEEDA"
 
                     Image {
-                        id: desertImage
+                        id: soupImage
+                        source: model.image
 
-                        source: model.imageSource
                         anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.bottom: desertNameText.top
+                        anchors.bottom: soupNameText.top
                         anchors.bottomMargin: 10
                     }
 
                     Text {
-                        id: desertNameText
-                        text: model.desertName
+                        id: soupNameText
+                        text: model.name
                         font.weight: 590
 
-                        anchors.bottom: desertPriceLabel.top
+                        anchors.bottom: soupPriceLabel.top
                         anchors.bottomMargin: 10
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
 
                     Label {
-                        id: desertPriceLabel
-                        text: model.desertPrice + "$"
+                        id: soupPriceLabel
+                        text: model.price + "$"
                         color: "#EC257C"
                         font.pixelSize: 16
                         font.weight: 600
@@ -99,8 +101,8 @@ ColumnLayout {
                         anchors.fill: parent
 
                         onClicked: {
-                            p1.target = desertImage
-                            p2.target = desertImage
+                            p1.target = soupImage
+                            p2.target = soupImage
                             anim.start()
                         }
                     }

@@ -3,35 +3,38 @@ cmake_minimum_required(VERSION 3.16)
 project(foodApp VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_AUTORCC ON)
 
-find_package(Qt6 6.4 REQUIRED COMPONENTS Quick)
+find_package(Qt6 6.4 REQUIRED COMPONENTS Quick Sql)
 
 qt_standard_project_setup()
 
+qt_policy(SET QTP0001 NEW)
+
 qt_add_executable(appfoodApp
-    main.cpp
+    source/main.cpp
 )
+
+file(GLOB header_files source/*.h)
+file(GLOB source_files source/*.cpp)
+file(GLOB ui_files ui/*.qml)
+
+source_group("Header" FILES ${header_files})
+source_group("Sources" FILES ${source_files})
+source_group("Ui" FILES qrc.qrc)
 
 qt_add_qml_module(appfoodApp
     URI foodApp
     VERSION 1.0
-    QML_FILES
-        Main.qml
-        QML_FILES Footer.qml FoodCarts.qml Banner.qml DesertsCarts.qml SearchBox.qml
-        QML_FILES FoodAppMain.qml CustomTextField.qml Signup.qml Description_2.qml
-        QML_FILES Login.qml Description_1.qml LoadingPage.qml AccountPage.qml
-        QML_FILES SearchPage.qml
 
-        RESOURCES images/food.png images/food2.png images/backFood2.png images/emailIcon.png
-        RESOURCES images/logo2.png images/logo.png images/googleLogo.png images/food3.png
-        RESOURCES images/userIcon.png images/passwordIcon.png images/eyeIcon.png
-        RESOURCES images/serchIcon.png images/settingIcon.png images/notification.png
-        RESOURCES images/shopIcon.png images/messageIcon.png images/homeIcon.png         
-        RESOURCES images/user2Icon.png images/IceCream.png images/burger.png images/facebookLogo.png
-        RESOURCES images/ZingerBurger.png images/sandwich.png images/rollParatha.png
-        RESOURCES images/ZingerBurger.png images/cup.png images/biscut.png images/pizzaRoll.png
-        RESOURCES images/x.png
-        QML_FILES Models.qml
+    SOURCES
+    ${header_files}
+    ${source_files}
+)
+
+qt_add_resources(appfoodApp "resources"
+    FILES
+    qrc.qrc
 )
 
 set_target_properties(appfoodApp PROPERTIES
@@ -43,9 +46,11 @@ set_target_properties(appfoodApp PROPERTIES
 
 target_link_libraries(appfoodApp
     PRIVATE Qt6::Quick
+    PRIVATE Qt6::Sql
 )
 
 include(GNUInstallDirs)
+
 install(TARGETS appfoodApp
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}

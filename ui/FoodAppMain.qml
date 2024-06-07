@@ -37,8 +37,9 @@ Page {
                     id: serchBox
                     width: 263
                     height: 54
-                    leftIconSource: "images/serchIcon.png"
-                    rightIconSource: "images/settingIcon.png"
+
+                    leftIconSource: "qrc:/images/serchIcon.png"
+                    rightIconSource: "qrc:/images/settingIcon.png"
 
                     Layout.fillWidth: true
                     Layout.fillHeight: true
@@ -50,7 +51,7 @@ Page {
 
                 IconImage {
                     id: notificationIcon
-                    source: "images/notification"
+                    source: "qrc:/images/notification"
 
                     MouseArea {                       
                         anchors.fill: parent
@@ -86,7 +87,7 @@ Page {
 
                         Text {
                             id: searchedText
-                            text: qsTr("")
+                            text: qsTr("test")
                             color: "#646464"
                             font.pixelSize: 16
                             font.weight: 600
@@ -97,7 +98,7 @@ Page {
                             height: 25
 
                             IconImage {
-                                source: "images/x.png"
+                                source: "qrc:/images/x.png"
                                 color: "#646464"
                                 sourceSize.width: 15
                                 anchors.fill: parent
@@ -121,8 +122,13 @@ Page {
                 width: parent.width
             }
 
-            DesertsCarts {
-                id: desertsCarts
+            SoupCarts {
+                id: soupCarts
+                width: parent.width
+            }
+
+            DessertsCarts {
+                id: dessertsCarts
                 width: parent.width
             }
         }

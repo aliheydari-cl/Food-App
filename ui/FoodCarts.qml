@@ -4,7 +4,7 @@ import QtQuick.Layouts
 
 ColumnLayout {
     id: foodColumnLayout
-
+    visible: foodListModel.count === 0 ? false : true
     anchors.horizontalCenter: parent.horizontalCenter
 
     property bool foodShowAll: false
@@ -56,7 +56,7 @@ ColumnLayout {
 
         Repeater {
             id: repeater
-            model: foodShowAll ? models.foodListModel : models.singleFoodListModel
+            model: foodShowAll ? foodListModel : singleFoodListModel
 
             ColumnLayout {
                 width: parent.width
@@ -68,7 +68,7 @@ ColumnLayout {
 
                     Image {
                         id: foodImage
-                        source: model.imageSource
+                        source: model.image
 
                         anchors.horizontalCenter: parent.horizontalCenter
                         anchors.bottom: foodNameText.top
@@ -77,17 +77,18 @@ ColumnLayout {
 
                     Text {
                         id: foodNameText
-                        text: model.foodName
+                        text: model.name
                         font.weight: 590
 
                         anchors.bottom: foodPriceLabel.top
+
                         anchors.bottomMargin: 10
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
 
                     Label {
                         id: foodPriceLabel
-                        text: model.foodPrice + "$"
+                        text: model.price + "$"
                         color: "#EC257C"
                         font.pixelSize: 16
                         font.weight: 600

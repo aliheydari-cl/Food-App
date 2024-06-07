@@ -7,7 +7,7 @@ Page {
 
     Image {
         id: backfood
-        source: "images/backFood2.png"
+        source: "qrc:/images/backFood2.png"
         sourceSize.width: 408
         sourceSize.height: 434
         
@@ -18,7 +18,7 @@ Page {
 
     Image {
         id: food
-        source: "images/food2"
+        source: "qrc:/images/food2"
         sourceSize.width: 354
         sourceSize.height: 253
         

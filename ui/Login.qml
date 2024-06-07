@@ -27,7 +27,7 @@ Page {
 
     Image {
         id: logo2
-        source: "images/logo2.png"
+        source: "qrc:/images/logo2.png"
         sourceSize.width: 97
         sourceSize.height: 94
 
@@ -76,8 +76,8 @@ Page {
             leftPadding: 50
 
             placeholder.text: "example@gmail.com"
-            leftIconSource: "images/userIcon.png"
-            rightIconSource: "images/eyeIcon.png"
+            leftIconSource: "qrc:/images/userIcon.png"
+            rightIconSource: "qrc:/images/eyeIcon.png"
             rightIcon.visible: false
 
             anchors.top: loginLabel.bottom
@@ -91,8 +91,8 @@ Page {
             height: 45
 
             placeholder.text: "Password"
-            leftIconSource: "images/passwordIcon.png"
-            rightIconSource: "images/eyeIcon.png"
+            leftIconSource: "qrc:/images/passwordIcon.png"
+            rightIconSource: "qrc:/images/eyeIcon.png"
 
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: t1.bottom
@@ -165,7 +165,7 @@ Page {
 
             Image {
                 id: googleLogo
-                source: "images/googleLogo.png"
+                source: "qrc:/images/googleLogo.png"
 
                 MouseArea {
                     anchors.fill: parent
@@ -180,7 +180,7 @@ Page {
 
             Image {
                 id: facebookLogo
-                source: "images/facebookLogo.png"
+                source: "qrc:/images/facebookLogo.png"
 
                 MouseArea {
                     anchors.fill: parent

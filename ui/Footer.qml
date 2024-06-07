@@ -29,7 +29,7 @@ RowLayout {
 
         IconImage {
             id: homePageIcon
-            source: "images/homeIcon.png"
+            source: "qrc:/images/homeIcon.png"
             color: "#EC257C"
 
             anchors.centerIn: parent
@@ -57,7 +57,7 @@ RowLayout {
 
         IconImage {
             id: accountPageIcon
-            source: "images/user2Icon.png"
+            source: "qrc:/images/user2Icon.png"
             color: "white"
 
             anchors.centerIn: parent
@@ -85,7 +85,7 @@ RowLayout {
 
         IconImage {
             id: shopPageIcon
-            source: "images/shopIcon.png"
+            source: "qrc:/images/shopIcon.png"
             color: "white"
 
             anchors.centerIn: parent
@@ -112,7 +112,7 @@ RowLayout {
 
         IconImage {
             id: messagePageIcon
-            source: "images/messageIcon.png"
+            source: "qrc:/images/messageIcon.png"
             color: "white"
 
             anchors.centerIn: parent
