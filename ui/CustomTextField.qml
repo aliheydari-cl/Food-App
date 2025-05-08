@@ -28,7 +28,7 @@ TextField {
         }
     }
 
-    IconImage {
+    Image {
         id: icon1
         source: leftIconSource
 
@@ -37,7 +37,7 @@ TextField {
         anchors.leftMargin: 18
     }
 
-    IconImage {
+    Image {
         id: icon2
         source: rightIconSource
 

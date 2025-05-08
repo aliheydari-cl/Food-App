@@ -49,7 +49,7 @@ Page {
                     Layout.fillWidth: true
                 }
 
-                IconImage {
+                Image {
                     id: notificationIcon
                     source: "qrc:/images/notification"
 
@@ -97,9 +97,9 @@ Page {
                             width: 25
                             height: 25
 
-                            IconImage {
+                            Image {
                                 source: "qrc:/images/x.png"
-                                color: "#646464"
+                                //color: "#646464"
                                 sourceSize.width: 15
                                 anchors.fill: parent
                                 anchors.topMargin: 4

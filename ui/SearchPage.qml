@@ -43,7 +43,7 @@ Page {
                 Layout.fillWidth: true
             }
 
-            IconImage {
+            Image {
                 id: notificationIcon
                 source: "qrc:/images/notification"
 

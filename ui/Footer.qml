@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls.Material
 import QtQuick.Layouts
+import QtQuick.Effects
 
 RowLayout {
     spacing: 45
@@ -14,9 +15,10 @@ RowLayout {
     function selectPage(selectRect, selectIcon)
     {
         currentRect.color = "#EC257C"
-        currentIcon.color = "white"
+        currentIcon.iconColor = "white"
         selectRect.color = "white"
-        selectIcon.color = "#EC257C"
+        selectIcon.iconColor = "#EC257C"
+
         currentRect = selectRect
         currentIcon = selectIcon
     }
@@ -27,10 +29,18 @@ RowLayout {
         height: 40
         radius: 4
 
-        IconImage {
+        Image {
             id: homePageIcon
             source: "qrc:/images/homeIcon.png"
-            color: "#EC257C"
+            width: 30
+            height: 30
+
+            property color iconColor: "#EC257C"
+            layer.enabled: true
+            layer.effect: MultiEffect {
+                colorization: 1.0
+                colorizationColor: homePageIcon.iconColor
+            }
 
             anchors.centerIn: parent
         }
@@ -55,10 +65,16 @@ RowLayout {
         radius: 4
         color: "#EC257C"
 
-        IconImage {
+
+        Image {
             id: accountPageIcon
             source: "qrc:/images/user2Icon.png"
-            color: "white"
+            property color iconColor: "white"
+            layer.enabled: true
+            layer.effect: MultiEffect {
+                colorization: 1.0
+                colorizationColor: accountPageIcon.iconColor
+            }
 
             anchors.centerIn: parent
         }
@@ -83,11 +99,16 @@ RowLayout {
         radius: 4
         color: "#EC257C"
 
-        IconImage {
+
+        Image {
             id: shopPageIcon
             source: "qrc:/images/shopIcon.png"
-            color: "white"
-
+            property color iconColor: "white"
+            layer.enabled: true
+            layer.effect: MultiEffect {
+                colorization: 1.0
+                colorizationColor: shopPageIcon.iconColor
+            }
             anchors.centerIn: parent
         }
 
@@ -110,10 +131,15 @@ RowLayout {
         radius: 4
         color: "#EC257C"
 
-        IconImage {
+        Image {
             id: messagePageIcon
             source: "qrc:/images/messageIcon.png"
-            color: "white"
+            property color iconColor: "white"
+            layer.enabled: true
+            layer.effect: MultiEffect{
+                colorization: 1.0
+                colorizationColor: messagePageIcon.iconColor
+            }
 
             anchors.centerIn: parent
         }
